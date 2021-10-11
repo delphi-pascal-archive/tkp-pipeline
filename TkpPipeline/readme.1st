@@ -1,0 +1,58 @@
+TkpPipeline  v 1.0
+
+ омпонент дл€ моделировани€ движени€ потока в трубах
+или электрической цепи.
+
+верси€ 1.0
+(c)  . ѕол€ков, 2003
+
+     FIDO:   2:5030/542.251
+     e-mail: kpolyakov@mail.ru
+     Web:    http://kpolyakov.narod.ru
+             http://kpolyakov.newmail.ru
+
+ќграничени€:
+     - одностороннее движение жидкости, ветки, выход€щие
+       из разных источников,не могут пересекатьс€  
+     - трубы соедин€ютс€ только под пр€мым углом
+     - движение потока имитируетс€ движением пр€моугольников
+       разных цветов 
+
+ќписание схемы представл€ет собой набор символьных
+строк.  ажда€ строка описывает один элемент:
+     s x y им€_входа    вход в точке (x,y)
+     l длина            звено влево
+     г длина            звено вправо
+     u длина            звено вверх
+     d длина            звено вниз
+     j им€_узла         новый узел в текущей позиции курсора
+     t им€_выхода       выход в текущей позиции курсора
+     g им€_узла         перейти в узел
+
+ƒополнительные свойства и методы:
+     Animate: Boolean     использовать анимацию или нет
+     Color: TColor        цвет воды
+     AltColor: TColor     цвет промежутков
+     BkColor: TColor      цвет фона
+     BkBitmap: TBitmap    фоновый рисунок
+     JointColor: TColor   цвет контура узлов
+     TickLength: integer  длина отрезка при анимации
+     PipeWidth: integer   ширина трубы
+     MapList: TStrings    описание трубопровода (карта)
+     Period: integer      интервал дл€ анимации
+     MoveStep: integer    шаг движени€
+     HasLabels: Boolean   ставить ли метки входов и выходов
+     SourceState[Index: integer]: Boolean       состо€ние входа (да/нет)
+     TerminalState[Index: integer]: Boolean     состо€ние выхода (да/нет)
+     SourceStateByName[Name: string]: Boolean   состо€ние входа по имени
+     TerminalStateByName[Name: string]: Boolean состо€ние выхода по имени
+     SourceNames: TStrings   имена входов
+     TerminalNames: TStrings имена выходов
+     JointNames: TStrings    имена узлов
+
+—обыти€:
+     OnChange: TNotifyEvent  изменилось состо€ние входов, могло
+                             (но не об€зательно!) изменитьс€ и состо€ние
+                             выходов 
+     OnProcessLine: TLineNotifyEvent событие при обработке строки карты с
+                             указанным номером
